@@ -1,43 +1,30 @@
-import Button from '@mui/material/Button';
-// まとめてアイコンインストールするときは、○○IconのIconは省略してOK
-import { Settings, Add } from '@mui/icons-material';
-import { styled, Typography } from '@mui/material';
+import Sidebar from './components/Sidebar';
+import Rightbar from './components/Rightbar';
+import Feed from './components/Feed';
+import { Box, createTheme, Stack, ThemeProvider } from '@mui/material';
+import Navbar from './components/Navbar';
+import Add from './components/Add';
+import { useState } from 'react';
+
 function App() {
-  // デザインの共通化const 任意のコンポーネント名 = styled(HTMLのタグ)
-  const BlueButton = styled(Button)({
-    // theme.jsで任意のpaletteを使用したい場合
-    // const CustomButton = styled(Button)(({ theme }) => ({
-    // backgroundColor: theme.palette.otherColor.main }
-    backgroundColor: 'skyblue',
-    color: '#888',
-    margin: 5,
-    '&:hover': {
-      backgroundColor: 'lightblue',
-    },
-    '&:disabled': {
-      backgroundColor: 'gray',
-      color: 'white',
+  const [darkModeToggle, setDarkModeToggle] = useState('light');
+  const darkTheme = createTheme({
+    palette: {
+      mode: darkModeToggle,
     },
   });
   return (
-    <>
-      <Button variant="text">Text</Button>
-      <Button startIcon={<Settings />} variant="contained" color="primary" size="small">
-        Settings
-      </Button>
-      <Button startIcon={<Add />} variant="contained" color="secondary" size="small">
-        Add new post
-      </Button>
-      <Button variant="outlined" disabled>
-        Outlined
-      </Button>
-      {/* pタグで大きさがh1のテキスト */}
-      <Typography variant="h1" component="p">
-        It uses h1 style but it's a p tag
-      </Typography>
-      <BlueButton>My Button</BlueButton>
-      <BlueButton>Another Button</BlueButton>
-    </>
+    <ThemeProvider theme={darkTheme}>
+      <Box bgcolor={'background.default'} color={'text.primary'}>
+        <Navbar />
+        <Stack direction="row" spacing={2} justifyContent="space-between">
+          <Sidebar setDarkModeToggle={setDarkModeToggle} darkModeToggle={darkModeToggle} />
+          <Feed />
+          <Rightbar />
+        </Stack>
+        <Add />
+      </Box>
+    </ThemeProvider>
   );
 }
 
