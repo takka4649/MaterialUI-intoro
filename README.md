@@ -1,9 +1,11 @@
-# React + Vite
+# MaterialUI の学習
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MaterialUI に慣れたくて動画を参考に真似しながらやってます。
+[参考サイト](https://www.youtube.com/watch?v=fzxEECHnsvU)
 
-Currently, two official plugins are available:
+## ブランチの内容
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# MaterialUI-intoro
+- main
+  MaterialUI のデザインの共通化の方法について記載
+- feature/responsePage
+  レスポンシブデザイン？の記述
